@@ -2,13 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { PokemonCardComponent } from 'src/app/components/pokemon-card/pokemon-card.component';
+import { SearchComponent } from 'src/app/components/search/search.component';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PokemonCardComponent],
+  imports: [CommonModule, PokemonCardComponent, SearchComponent],
   template: `
+    <app-search></app-search>
+
     @for (product of results$ | async; track product.name) {
     <app-pokemon-card
       [name]="product.name"
