@@ -13,7 +13,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@services/*": ["src/services/*"],
+      "@pipes/*": ["src/pipes/*"],
+      "@models/*": ["src/models/*"],
+      "@env/*": ["src/environments/*"],
+      "@pages/*": ["src/pages/*"],
+      "@components/*": ["src/components/*"]
+    },
     "useDefineForClassFields": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
