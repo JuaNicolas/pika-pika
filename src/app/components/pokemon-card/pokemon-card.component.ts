@@ -1,35 +1,30 @@
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { PokeImagePipe } from 'src/app/pipes/pokeImage.pipe';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-pokemon-card',
   standalone: true,
-  imports: [CommonModule, PokeImagePipe, MatCardModule, MatButtonModule],
+  imports: [CommonModule, PokeImagePipe, NgOptimizedImage, RouterModule],
   template: `
-    <mat-card class="example-card">
-      <mat-card-header>
-        <img
-          mat-card-avatar
-          mat-card-image
-          [src]="id | pokeImage"
-          [alt]="name"
-        />
-        <mat-card-title> {{ name | titlecase }} </mat-card-title>
-      </mat-card-header>
+    <div class="card">
       <img
-        mat-card-image
-        [src]="id | pokeImage"
+        class="rounded mx-auto d-block"
+        [ngSrc]="id | pokeImage"
         [alt]="name"
-        alt="96"
+        height="96"
         width="96"
       />
-      <mat-card-actions>
-        <button mat-button>Details</button>
-      </mat-card-actions>
-    </mat-card>
+      <div class="card-body text-center">
+        <h5 class="card-title">#{{ id }} {{ name | titlecase }}</h5>
+      </div>
+      <div class="card-footer text-center">
+        <a [routerLink]="['pokemon', id]" class="card-link link-info"
+          >Details</a
+        >
+      </div>
+    </div>
   `,
   styleUrl: './pokemon-card.component.scss',
 })

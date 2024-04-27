@@ -5246,7 +5246,7 @@ export class ApiService {
           count,
           next,
           previous,
-          results: results.map(({ name, url }) => ({
+          results: results.slice(0, 20).map(({ name, url }) => ({
             name,
             url,
             id: +url.split('/')[6],
@@ -5255,7 +5255,6 @@ export class ApiService {
       ),
       this.searchParam$,
     ]).pipe(
-      tap(([_, s]) => console.log(s)),
       map(([api, search]) => ({
         ...api,
         results: api.results.filter((pokemon) =>

@@ -1,54 +1,45 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  DestroyRef,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  inject,
-} from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInput, MatInputModule } from '@angular/material/input';
-import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, MatInputModule, MatIconModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <mat-form-field>
-      <mat-label>Search Pokémon</mat-label>
-      <input matInput type="text" />
-      @if (value) {
-      <button matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
-        <mat-icon>close</mat-icon>
-      </button>
-      }
-    </mat-form-field>
+    <div class="row">
+      <div class="col-3">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Search Pokémon"
+          aria-label="Search Pokémon"
+        />
+      </div>
+    </div>
   `,
   styles: ``,
 })
-export class SearchComponent implements OnInit {
-  @ViewChild(MatInput, { static: true, read: ElementRef })
-  searchInput!: ElementRef<HTMLInputElement>;
-
+export class SearchComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly apiService = inject(ApiService);
 
   value = '';
 
-  ngOnInit(): void {
-    fromEvent<KeyboardEvent>(this.searchInput.nativeElement, 'keyup')
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        map((v) => (v.target as HTMLInputElement).value),
-        debounceTime(250),
-        distinctUntilChanged()
-      )
-      .subscribe((v) => this.apiService.notifySearchParam(v));
-    console.log(this.searchInput.nativeElement.value);
-  }
+  // ngOnInit(): void {
+  //   fromEvent<KeyboardEvent>(this.searchInput.nativeElement, 'keyup')
+  //     .pipe(
+  //       takeUntilDestroyed(this.destroyRef),
+  //       map((v) => (v.target as HTMLInputElement).value),
+  //       debounceTime(250),
+  //       distinctUntilChanged()
+  //     )
+  //     .subscribe((v) => this.apiService.notifySearchParam(v));
+  // }
+
+  // handleClear() {
+  //   this.searchInput.nativeElement.value = '';
+  //   this.apiService.notifySearchParam('');
+  // }
 }
