@@ -20,7 +20,7 @@ import { PokeImagePipe } from 'src/app/pipes/pokeImage.pipe';
         <h5 class="card-title">#{{ id }} {{ name | titlecase }}</h5>
       </div>
       <div class="card-footer text-center">
-        <a [routerLink]="['pokemon', id]" class="card-link link-info"
+        <a [routerLink]="['pokemon', name]" class="card-link link-info"
           >Details</a
         >
       </div>

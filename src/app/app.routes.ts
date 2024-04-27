@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
       import('./pages/home/home.component').then((c) => c.HomeComponent),
   },
   {
-    path: 'pokemon/:id',
+    path: 'pokemon/:name',
     loadComponent: () =>
       import('./pages/detail/detail.component').then((c) => c.DetailComponent),
   },
