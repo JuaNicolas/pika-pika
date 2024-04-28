@@ -31,6 +31,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
       placeholder="Search Pokémon"
       aria-label="Search Pokémon"
     />
+
+    <i class="bi bi-search"></i>
   `,
   styles: `
   :host {

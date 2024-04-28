@@ -1,0 +1,92 @@
+.navbar {
+  color: gray;
+
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.18);
+  box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.18);
+  transition: background-color 500ms ease-in, color 500ms ease-in;
+}
+
+.black {
+  background-color: #607d8b;
+  color: white;
+}
+
+.blue {
+  background-color: #81d4fa;
+  color: white;
+}
+
+.brown {
+  background-color: #bcaaa4;
+  color: white;
+}
+
+.gray {
+  background-color: #a6a6a6;
+  color: white;
+}
+
+.green {
+  background-color: #81c784;
+  color: white;
+}
+
+.pink {
+  background-color: #f8bbd0;
+  color: white;
+}
+
+.purple {
+  background-color: #ad8ee7;
+  color: white;
+}
+
+.red {
+  background-color: #ff8a80;
+  color: white;
+}
+
+.white {
+  background-color: #d5dbe1;
+  color: dimgray;
+}
+
+.yellow {
+  background-color: #ffd600;
+  color: white;
+}
+
+.search-bar {
+  margin-top: -7px !important;
+}
+
+.search-bar-form {
+  opacity: 1;
+  transition: all 1s;
+  visibility: visible;
+}
+
+.search-fade {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-arrow {
+  margin: 0;
+  padding-top: 0;
+  padding-left: 0;
+  opacity: 1;
+  transition: opacity 1s;
+  visibility: visible;
+}
+
+.back-arrow-fade {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}

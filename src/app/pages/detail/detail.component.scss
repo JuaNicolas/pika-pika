@@ -1,0 +1,214 @@
+.icon {
+  border-radius: 4px;
+  height: 30px;
+  width: 90px;
+  filter: saturate(100%) brightness(110%);
+  transition: all 0.2s;
+  margin: 0 0 0 15px;
+}
+
+.icon .col-8 {
+  padding: 5px 0 0 5px;
+  margin: 0;
+}
+
+.icon .col-4 {
+  padding: 0;
+}
+
+.icon img {
+  width: 18px;
+  height: 18px;
+  margin: 20%;
+}
+
+.bug {
+  background: #92bc2c;
+  box-shadow: 0 0 20px #92bc2c;
+}
+
+.dark {
+  background: #595761;
+  box-shadow: 0 0 20px #595761;
+}
+
+.dragon {
+  background: #0c69c8;
+  box-shadow: 0 0 20px #0c69c8;
+}
+
+.electric {
+  background: #f2d94e;
+  box-shadow: 0 0 20px #f2d94e;
+}
+
+.fire {
+  background: #fba54c;
+  box-shadow: 0 0 20px #fba54c;
+}
+
+.fairy {
+  background: #ee90e6;
+  box-shadow: 0 0 20px #ee90e6;
+}
+
+.fighting {
+  background: #d3425f;
+  box-shadow: 0 0 20px #d3425f;
+}
+
+.flying {
+  background: #a1bbec;
+  box-shadow: 0 0 20px #a1bbec;
+}
+
+.ghost {
+  background: #5f6dbc;
+  box-shadow: 0 0 20px #5f6dbc;
+}
+
+.grass {
+  background: #5fbd58;
+  box-shadow: 0 0 20px #5fbd58;
+}
+
+.ground {
+  background: #da7c4d;
+  box-shadow: 0 0 20px #da7c4d;
+}
+
+.ice {
+  background: #75d0c1;
+  box-shadow: 0 0 20px #75d0c1;
+}
+
+.normal {
+  background: #a0a29f;
+  box-shadow: 0 0 20px #a0a29f;
+}
+
+.poison {
+  background: #b763cf;
+  box-shadow: 0 0 20px #b763cf;
+}
+
+.psychic {
+  background: #fa8581;
+  box-shadow: 0 0 20px #fa8581;
+}
+
+.rock {
+  background: #c9bb8a;
+  box-shadow: 0 0 20px #c9bb8a;
+}
+
+.steel {
+  background: #5695a3;
+  box-shadow: 0 0 20px #5695a3;
+}
+
+.water {
+  background: #539ddf;
+  box-shadow: 0 0 20px #539ddf;
+}
+
+// Colors
+.black {
+  background-color: #607d8b !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.blue {
+  background-color: #81d4fa !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.brown {
+  background-color: #bcaaa4 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.gray {
+  background-color: #a6a6a6 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.green {
+  background-color: #81c784 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.pink {
+  background-color: #f8bbd0 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.purple {
+  background-color: #ad8ee7 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.red {
+  background-color: #ff8a80 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.white {
+  background-color: #d5dbe1 !important;
+  color: dimgray !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+.yellow {
+  background-color: #ffd600 !important;
+  color: white !important;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+}
+
+table.table-black tbody {
+  background-color: #f3f8fa;
+}
+
+table.table-blue tbody {
+  background-color: #ecf9ff;
+}
+
+table.table-brown tbody {
+  background-color: #f4f4f4;
+}
+
+table.table-gray tbody {
+  background-color: #f0f0f0;
+}
+
+table.table-green tbody {
+  background-color: #eeffef;
+}
+
+table.table-pink tbody {
+  background-color: #fff7fa;
+}
+
+table.table-purple tbody {
+  background-color: #f7f2ff;
+}
+
+table.table-red tbody {
+  background-color: #fff9f9;
+}
+
+table.table-white tbody {
+  background-color: #f6f7f8;
+}
+
+table.table-yellow tbody {
+  background-color: #fffade;
+}

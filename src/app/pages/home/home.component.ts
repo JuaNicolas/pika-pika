@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, map, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { PokemonCardComponent } from 'src/app/components/pokemon-card/pokemon-card.component';
 import { SearchComponent } from 'src/app/components/search/search.component';
 import { ApiService } from 'src/app/services/api.service';
@@ -34,9 +34,8 @@ export class HomeComponent {
 
   readonly vm$ = combineLatest([
     this.apiService.getPokemons().pipe(map((r) => r.results)),
-    this.searchParam$,
+    this.searchParam$.pipe(map((v) => v.toLowerCase())),
   ]).pipe(
-    tap((v) => console.log(v)),
     map(([pokemons, searchTerm]) =>
       pokemons.filter((p) => p.name.includes(searchTerm))
     )
