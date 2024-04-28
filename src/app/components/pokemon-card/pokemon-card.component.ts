@@ -10,7 +10,7 @@ import { PokeImagePipe } from 'src/app/pipes/pokeImage.pipe';
   template: `
     <div class="card">
       <img
-        class="rounded mx-auto d-block"
+        class="mx-auto"
         [ngSrc]="id | pokeImage"
         [alt]="name"
         height="96"

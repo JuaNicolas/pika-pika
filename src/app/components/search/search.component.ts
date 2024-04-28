@@ -1,45 +1,60 @@
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  DestroyRef,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ApiService } from 'src/app/services/api.service';
+import {
+  Subject,
+  debounceTime,
+  distinctUntilChanged,
+  fromEvent,
+  map,
+} from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-search',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <div class="row">
-      <div class="col-3">
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Search Pokémon"
-          aria-label="Search Pokémon"
-        />
-      </div>
-    </div>
+    <input
+      #searchInput
+      class="form-control"
+      type="text"
+      placeholder="Search Pokémon"
+      aria-label="Search Pokémon"
+    />
   `,
-  styles: ``,
+  styles: `
+  :host {
+    display:block;
+  }
+  `,
 })
-export class SearchComponent {
+export class SearchComponent implements AfterViewInit {
   private readonly destroyRef = inject(DestroyRef);
-  private readonly apiService = inject(ApiService);
 
-  value = '';
+  @Input({ required: true })
+  searchParam!: Subject<string>;
 
-  // ngOnInit(): void {
-  //   fromEvent<KeyboardEvent>(this.searchInput.nativeElement, 'keyup')
-  //     .pipe(
-  //       takeUntilDestroyed(this.destroyRef),
-  //       map((v) => (v.target as HTMLInputElement).value),
-  //       debounceTime(250),
-  //       distinctUntilChanged()
-  //     )
-  //     .subscribe((v) => this.apiService.notifySearchParam(v));
-  // }
+  @ViewChild('searchInput')
+  searchInput!: ElementRef<HTMLInputElement>;
 
-  // handleClear() {
-  //   this.searchInput.nativeElement.value = '';
-  //   this.apiService.notifySearchParam('');
-  // }
+  ngAfterViewInit(): void {
+    fromEvent<KeyboardEvent>(this.searchInput.nativeElement, 'keyup')
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        map((v) => (v.target as HTMLInputElement).value),
+        debounceTime(250),
+        distinctUntilChanged()
+      )
+      .subscribe((v) => this.searchParam.next(v));
+  }
 }

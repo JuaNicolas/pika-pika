@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pokedex } from 'pokeapi-js-wrapper';
-import { BehaviorSubject, from, map } from 'rxjs';
+import { from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +19,13 @@ export class ApiService {
         count,
         next,
         previous,
-        results: results.map(({ name, url }) => ({
-          name,
-          url,
-          id: +url.split('/')[6],
-        })),
+        results: results
+          .map(({ name, url }) => ({
+            name,
+            url,
+            id: +url.split('/')[6],
+          }))
+          .slice(0, 20),
       }))
     );
   }

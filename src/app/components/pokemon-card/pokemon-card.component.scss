@@ -1,5 +1,11 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
 .card {
-  max-width: 18rem;
+  width: 16rem;
+  --bs-card-border-radius: 4px;
 
   &-title {
     font-family: VT323, sans-serif;
