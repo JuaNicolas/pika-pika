@@ -1,92 +1,62 @@
 .navbar {
-  color: gray;
-
   background-color: white;
   -webkit-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.18);
   -moz-box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.18);
   box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.18);
   transition: background-color 500ms ease-in, color 500ms ease-in;
+
+  display: grid;
+  grid-template-areas: 'arrow logo';
+  padding: 8px 24px;
+
+  .arrow {
+    grid-area: arrow;
+    font-size: 24px;
+  }
+  .logo {
+    grid-area: logo;
+    img {
+      max-width: 125px;
+    }
+  }
 }
 
 .black {
-  background-color: #607d8b;
-  color: white;
+  color: #607d8b;
 }
 
 .blue {
-  background-color: #81d4fa;
-  color: white;
+  color: #81d4fa;
 }
 
 .brown {
-  background-color: #bcaaa4;
-  color: white;
+  color: #bcaaa4;
 }
 
 .gray {
-  background-color: #a6a6a6;
-  color: white;
+  color: #a6a6a6;
 }
 
 .green {
-  background-color: #81c784;
-  color: white;
+  color: #81c784;
 }
 
 .pink {
-  background-color: #f8bbd0;
-  color: white;
+  color: #f8bbd0;
 }
 
 .purple {
-  background-color: #ad8ee7;
-  color: white;
+  color: #ad8ee7;
 }
 
 .red {
-  background-color: #ff8a80;
-  color: white;
+  color: #ff8a80;
 }
 
 .white {
-  background-color: #d5dbe1;
-  color: dimgray;
+  color: #d5dbe1;
 }
 
 .yellow {
-  background-color: #ffd600;
-  color: white;
-}
-
-.search-bar {
-  margin-top: -7px !important;
-}
-
-.search-bar-form {
-  opacity: 1;
-  transition: all 1s;
-  visibility: visible;
-}
-
-.search-fade {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.back-arrow {
-  margin: 0;
-  padding-top: 0;
-  padding-left: 0;
-  opacity: 1;
-  transition: opacity 1s;
-  visibility: visible;
-}
-
-.back-arrow-fade {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.form-control:focus {
-  box-shadow: none;
+  color: #ffd600;
 }

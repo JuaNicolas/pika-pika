@@ -2,3 +2,68 @@
   display: block;
   height: 100vh;
 }
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, -70px, 0);
+  }
+  to {
+    transform: translate3d(0, 70px, 0);
+  }
+}
+
+.loading-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1021;
+  background: rgb(55, 97, 168);
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    color: white;
+    font-size: 32px;
+    line-height: 42px;
+    font-family: VT323, sans-serif;
+  }
+
+  .pokeball-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .pokeball-0,
+  .pokeball-1,
+  .pokeball-2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .pokeball-0 {
+    animation: bounce 0.6s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+    animation-iteration-count: infinite;
+  }
+  .pokeball-1 {
+    animation: bounce 0.6s;
+    animation-delay: 0.1s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+    animation-iteration-count: infinite;
+  }
+  .pokeball-2 {
+    animation: bounce 0.6s;
+    animation-delay: 0.2s;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+    animation-iteration-count: infinite;
+  }
+}

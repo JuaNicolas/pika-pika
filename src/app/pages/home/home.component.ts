@@ -10,27 +10,39 @@ import { ApiService } from 'src/app/services/api.service';
   standalone: true,
   imports: [CommonModule, PokemonCardComponent, SearchComponent],
   template: `
-    <div class="row justify-content-center py-5">
-      <app-search [searchParam]="searchParam$"></app-search>
-    </div>
+    <div class="container">
+      <div class="row justify-content-center py-5">
+        <app-search [searchParam]="searchParam$"></app-search>
+      </div>
 
-    <div class="row">
-      @for (pokemon of vm$ | async; track pokemon.name) {
-      <app-pokemon-card
-        class="col-12 col-md-4 col-lg-3 mx-auto g-3"
-        [name]="pokemon.name"
-        [url]="pokemon.url"
-        [id]="pokemon.id"
-      ></app-pokemon-card>
-      } @empty {
-      <div>No products added yet!</div>
-      }
+      <div class="row">
+        @for (pokemon of vm$ | async; track pokemon.name) {
+        <app-pokemon-card
+          class="col-12 col-md-4 col-lg-3 g-3"
+          [name]="pokemon.name"
+          [url]="pokemon.url"
+          [id]="pokemon.id"
+        ></app-pokemon-card>
+        } @empty {
+
+        <div class="pokeball-container">
+          <span>Oh no! There are no Pokemon in this area!</span>
+          <img
+            class="pokeball"
+            src="assets/pokeball.png"
+            alt="Pokeball"
+            height="128px"
+            width="128px"
+          />
+        </div>
+        }
+      </div>
     </div>
   `,
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  readonly searchParam$ = new BehaviorSubject<string>('');
+  readonly searchParam$ = new BehaviorSubject<string>('asdfgdfgsdfgdf');
 
   readonly vm$ = combineLatest([
     this.apiService.getPokemons().pipe(map((r) => r.results)),
