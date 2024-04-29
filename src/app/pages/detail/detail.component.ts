@@ -140,7 +140,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrl: './detail.component.scss',
 })
 export class DetailComponent implements OnInit {
-  private readonly apiService = inject(ApiService);
+  constructor(private readonly apiService: ApiService) {}
 
   @Input() name = '';
 
