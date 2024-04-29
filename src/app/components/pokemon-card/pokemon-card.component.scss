@@ -4,8 +4,34 @@
 }
 
 .card {
-  width: 16rem;
   --bs-card-border-radius: 4px;
+  font-weight: 500;
+  width: 16rem;
+  background-color: #fff;
+  color: grey;
+  transition-property: color, background-color, scale, border-color;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+
+  img {
+    transition: transform 1s ease-out;
+  }
+
+  &:hover {
+    --greyish: #dbdbdb;
+    --bs-card-border-color: var(--greyish);
+    cursor: pointer;
+    background-color: var(--greyish);
+    color: black;
+    transition-property: color, background-color, scale, border-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+
+    img {
+      transition: transform 0.3s ease-in;
+      transform: scale(1.15);
+    }
+  }
 
   &-title {
     font-family: VT323, sans-serif;
