@@ -14,6 +14,7 @@ import { PokeImagePipe } from 'src/app/pipes/pokeImage.pipe';
         class="mx-auto"
         [ngSrc]="id | pokeImage"
         [alt]="name"
+        (error)="onImgError($event)"
         height="96"
         width="96"
       />
@@ -33,4 +34,8 @@ export class PokemonCardComponent {
 
   @Input({ required: true })
   id!: number;
+
+  onImgError(e: Event) {
+    (e.target as HTMLImageElement).src = '/assets/pokeball.png';
+  }
 }

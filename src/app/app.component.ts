@@ -1,13 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { CommonModule } from '@angular/common';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   standalone: true,
   imports: [RouterModule, HeaderComponent, CommonModule],
   selector: 'app-root',
   template: `
+    @if (isLoading$ |async) {
     <div class="loading-container">
       <span> Gotta cath 'em all! </span>
 
@@ -26,6 +28,8 @@ import { CommonModule } from '@angular/common';
       </div>
     </div>
 
+    }
+
     <app-header></app-header>
     <router-outlet></router-outlet>
   `,
@@ -33,4 +37,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'poke-api';
+
+  isLoading$ = this.loadingService.loading$;
+  constructor(private readonly loadingService: LoadingService) {}
 }

@@ -125,7 +125,16 @@ import { ApiService } from 'src/app/services/api.service';
       </div>
     </div>
     } @else {
-    <p>The profile doesn't exist!</p>
+    <div class="pokeball-container">
+      <span>This Pokémon escaped! Better luck next time!</span>
+      <img
+        class="pokeball"
+        src="assets/pokeball.png"
+        alt="Pokeball"
+        height="128px"
+        width="128px"
+      />
+    </div>
     }
   `,
   styleUrl: './detail.component.scss',

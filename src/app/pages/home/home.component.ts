@@ -15,7 +15,7 @@ import { ApiService } from 'src/app/services/api.service';
         <app-search [searchParam]="searchParam$"></app-search>
       </div>
 
-      <div class="row">
+      <div class="row pb-5">
         @for (pokemon of vm$ | async; track pokemon.name) {
         <app-pokemon-card
           class="col-12 col-md-4 col-lg-3 g-3"
@@ -42,7 +42,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  readonly searchParam$ = new BehaviorSubject<string>('asdfgdfgsdfgdf');
+  readonly searchParam$ = new BehaviorSubject<string>('');
 
   readonly vm$ = combineLatest([
     this.apiService.getPokemons().pipe(map((r) => r.results)),
