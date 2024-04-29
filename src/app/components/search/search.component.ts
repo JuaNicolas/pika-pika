@@ -5,10 +5,10 @@ import {
   DestroyRef,
   ElementRef,
   Input,
-  OnInit,
   ViewChild,
   inject,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   Subject,
@@ -17,7 +17,6 @@ import {
   fromEvent,
   map,
 } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-search',
@@ -27,6 +26,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     <div class="bg-light rounded rounded-pill shadow-sm align-content-center">
       <div class="input-group rounded-pill">
         <input
+          data-cy="search"
           #searchInput
           autocomplete="false"
           type="text"

@@ -8,7 +8,11 @@ import { PokeImagePipe } from 'src/app/pipes/pokeImage.pipe';
   standalone: true,
   imports: [CommonModule, PokeImagePipe, NgOptimizedImage, RouterModule],
   template: `
-    <div class="card" [routerLink]="['pokemon', name]">
+    <div
+      class="card"
+      [routerLink]="['pokemon', name]"
+      [attr.data-cy]="name"
+    >
       <div class="ps-3 pt-3"># {{ id }}</div>
       <img
         class="mx-auto"

@@ -20,7 +20,6 @@ import { LoadingService } from './loading.service';
 export class ApiService {
   private readonly pokedex = new Pokedex({
     cache: true,
-    timeout: 5 * 1000, // 5s
   });
 
   private readonly _pokemonColor = new BehaviorSubject<string>('');
