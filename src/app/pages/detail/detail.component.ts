@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from 'pokeapi-js-wrapper';
 import { Observable, forkJoin } from 'rxjs';
 import { GalleryDirective } from 'src/app/directives/gallery.directive';

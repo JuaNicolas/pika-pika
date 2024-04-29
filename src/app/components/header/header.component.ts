@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterEvent, RouterModule } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterModule
+} from '@angular/router';
 import { filter, map } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -25,8 +29,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class HeaderComponent {
   readonly color$ = this.apiService.pokemonColor$;
   readonly displayBack$ = this.router.events.pipe(
-    filter((e: any) => e instanceof RouterEvent),
-    map((value: RouterEvent) => value.url !== '/')
+    filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+    map((value) => value.url !== '/')
   );
 
   constructor(

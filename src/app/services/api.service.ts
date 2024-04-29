@@ -9,8 +9,7 @@ import {
   finalize,
   from,
   map,
-  of,
-  tap,
+  tap
 } from 'rxjs';
 import { LoadingService } from './loading.service';
 
