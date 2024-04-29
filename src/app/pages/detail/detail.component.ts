@@ -20,83 +20,90 @@ import { ApiService } from 'src/app/services/api.service';
   ],
   template: `
     @if (vm$ | async; as vm;) {
-    <h1>{{ vm.metadata.title | uppercase }}</h1>
-    <h2>{{ vm.metadata.subtitle }}</h2>
 
-    <table
-      class="table table-borderless"
-      [ngClass]="'table-' + vm.metadata.color"
-    >
-      <tbody>
-        <tr>
-          <td class="text-end fw-bold">ID</td>
-          <td>#{{ vm.pokemon.id }}</td>
-        </tr>
-        <tr>
-          <td class="text-end fw-bold">Height</td>
-          <td class="text-nowrap">
+    <div [ngClass]="'container-' + vm.metadata.color">
+      <div class="picture" [ngClass]="vm.metadata.color">
+        <span>#{{ vm.pokemon.id }}</span>
+        <img
+          appGallery
+          class="img-fluid"
+          [pokemon]="vm.pokemon"
+          height="250"
+          width="250"
+        />
+      </div>
+
+      <div class="title-container text-center pt-4">
+        <h1>{{ vm.metadata.title | uppercase }}</h1>
+        <h2 [ngClass]="'container-' + vm.metadata.color">
+          {{ vm.metadata.subtitle | lowercase }}
+        </h2>
+      </div>
+
+      <div class="type-container d-flex justify-content-center p-4">
+        @for (type of vm.pokemon | extractDetail : 'types'; track $index) {
+
+        <div [ngClass]="type" class="type-pill text-capitalize py-2 px-3">
+          <span class="text-white">
+            {{ type }}
+          </span>
+          <span>
+            <img
+              class="img-fluid"
+              [src]="'assets/icons/' + type + '.png'"
+              [alt]="type"
+              height="18"
+              width="18"
+            />
+          </span>
+        </div>
+        }
+      </div>
+
+      <div class="data-container mt-3">
+        <div class="data-line">
+          <span class="data-title">
+            <i class="fa-solid fa-ruler"></i> Height</span
+          >
+          <span class="text-nowrap">
             {{ vm.pokemon.height | formatUnit : 'height' }}
-          </td>
-        </tr>
-        <tr>
-          <td class="text-end fw-bold">Weight</td>
-          <td class="text-nowrap">
+          </span>
+        </div>
+        <div class="data-line">
+          <span class="data-title"
+            ><i class="fa-solid fa-weight-hanging"></i> Weight</span
+          >
+          <span class="text-nowrap">
             {{ vm.pokemon.weight | formatUnit : 'weight' }}
-          </td>
-        </tr>
+          </span>
+        </div>
+        <div class="data-line">
+          <span class="data-title">
+            <i class="fa-solid fa-bolt"></i> Abilities</span
+          >
 
-        <tr>
-          <td class="text-end fw-bold">Abilities</td>
-
-          <td class="text-nowrap">
+          <span class="text-nowrap">
             @for (ability of vm.pokemon | extractDetail : 'abilities'; track
             $index) {
-            {{ ability }}
+            <span class="ability">
+              {{ ability | titlecase }}
+            </span>
             }
-          </td>
-        </tr>
+          </span>
+        </div>
+      </div>
 
-        <tr>
-          <td class="text-end fw-bold">Types</td>
+      <div class="stats-container pt-3 pb-5 container">
+        <div class="stats-title text-center">
+          <i class="fa-solid fa-chart-simple"></i>
+          Stats
+        </div>
 
-          <td class="text-nowrap">
-            <div class="row flex-nowrap">
-              @for (type of vm.pokemon | extractDetail : 'types'; track $index)
-              {
+        <div class="stats-table">
+          @for (stat of vm.pokemon.stats | keyvalue; track $index) {
 
-              <div [ngClass]="type" class="row icon text-capitalize p-0">
-                <span class="col-8 text-white">
-                  {{ type }}
-                </span>
-                <span class="col-4">
-                  <img
-                    class="img-fluid"
-                    [src]="'assets/icons/' + type + '.png'"
-                    [alt]="type"
-                  />
-                </span>
-              </div>
-              }
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <img appGallery [pokemon]="vm.pokemon" />
-
-    <table
-      class="table table-borderless"
-      [ngClass]="'table-' + vm.metadata.color"
-    >
-      <tbody>
-        @for (stat of vm.pokemon.stats | keyvalue; track $index) {
-
-        <tr>
-          <td class="text-end fw-bold">
+          <div class="stats-row">
             {{ vm.pokemon.stats[$index].stat.name | formatTableStatKey }}
-          </td>
-          <td class="text-nowrap">
             <div class="progress">
               <div
                 class="progress-bar progress-bar-striped progress-bar-animated rounded-sm"
@@ -104,16 +111,19 @@ import { ApiService } from 'src/app/services/api.service';
                 aria-valuemin="0"
                 aria-valuemax="100"
                 [ngClass]="vm.metadata.color"
-                [ngStyle]="{ 'width.%': vm.pokemon.stats[$index].base_stat }"
+                [ngStyle]="{
+                  'width.%': vm.pokemon.stats[$index].base_stat,
+                }"
               >
-                <span>{{ vm.pokemon.stats[$index].base_stat }}</span>
+                <span>{{ vm.pokemon.stats[$index].base_stat }} %</span>
               </div>
             </div>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </table>
+          </div>
+
+          }
+        </div>
+      </div>
+    </div>
     } @else {
     <p>The profile doesn't exist!</p>
     }

@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+  max-width: 246px;
+  > div {
+    height: 40px;
+  }
+
+  > div,
+  input {
+    background-color: #f6f6f6;
+  }
+
+  input,
+  button {
+    &:focus {
+      outline: 0 !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .btn-link:has(i.bi-x) {
+    padding: 0 0.5rem;
+  }
+  i.bi-x {
+    font-size: 1.5rem;
+  }
+}

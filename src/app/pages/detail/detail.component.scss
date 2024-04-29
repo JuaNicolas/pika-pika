@@ -1,214 +1,292 @@
-.icon {
-  border-radius: 4px;
-  height: 30px;
-  width: 90px;
-  filter: saturate(100%) brightness(110%);
-  transition: all 0.2s;
-  margin: 0 0 0 15px;
+@mixin setTypeColor($bg-code, $shadow) {
+  background: $bg-code;
+  box-shadow: 0 0 20px $shadow;
 }
 
-.icon .col-8 {
-  padding: 5px 0 0 5px;
-  margin: 0;
+@mixin setBackgroundColor($color-code) {
+  background-color: $color-code;
+  color: white;
+  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
 }
 
-.icon .col-4 {
-  padding: 0;
+.picture {
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-bottom-right-radius: 48px;
+  border-bottom-left-radius: 48px;
+
+  & {
+    span {
+      position: absolute;
+      background-color: white;
+      font-family: VT323, sans-serif;
+      font-size: 24px;
+      color: black;
+      padding: 0 16px;
+      top: 0;
+      left: 32px;
+      border-bottom-right-radius: 48px;
+      border-bottom-left-radius: 48px;
+      @include setTypeColor(white, black);
+    }
+  }
 }
 
-.icon img {
-  width: 18px;
-  height: 18px;
-  margin: 20%;
+h1 {
+  font-family: VT323, sans-serif;
+  font-size: 64px;
+  letter-spacing: 1px;
+  line-height: 40px;
+}
+
+h2 {
+  font-size: 16px;
+  line-height: 16px;
+  width: fit-content;
+  padding: 0 5px;
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.title-container {
+  width: max-content;
+  margin: auto;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    bottom: 6px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.type {
+  &-container {
+    gap: 16px;
+  }
+
+  &-pill {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    border-radius: 48px;
+  }
+}
+
+.data {
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 24px;
+    padding: 0 16px;
+    flex-wrap: wrap;
+    position: relative;
+    padding-bottom: 20px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: calc(100% - 32px);
+      height: 1px;
+      background-color: black;
+      left: 16px;
+      bottom: 0;
+    }
+  }
+
+  &-line {
+    display: flex;
+    padding: 0 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-direction: column;
+
+    span.ability {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  &-title {
+    font-size: 20px;
+    font-weight: 500;
+
+    svg {
+      margin-right: 4px;
+      font-size: 16px;
+    }
+  }
+}
+
+.stats {
+  &-container {
+    max-width: 960px;
+  }
+  &-title {
+    font-size: 20px;
+    font-weight: 500;
+    svg {
+      margin-right: 4px;
+      font-size: 16px;
+    }
+  }
+
+  &-row {
+    padding: 6px 0;
+  }
 }
 
 .bug {
-  background: #92bc2c;
-  box-shadow: 0 0 20px #92bc2c;
+  @include setTypeColor(#92bc2c, #92bc2c);
 }
 
 .dark {
-  background: #595761;
-  box-shadow: 0 0 20px #595761;
+  @include setTypeColor(#595761, #595761);
 }
 
 .dragon {
-  background: #0c69c8;
-  box-shadow: 0 0 20px #0c69c8;
+  @include setTypeColor(#0c69c8, #0c69c8);
 }
 
 .electric {
-  background: #f2d94e;
-  box-shadow: 0 0 20px #f2d94e;
+  @include setTypeColor(#f2d94e, #f2d94e);
 }
 
 .fire {
-  background: #fba54c;
-  box-shadow: 0 0 20px #fba54c;
+  @include setTypeColor(#fba54c, #fba54c);
 }
 
 .fairy {
-  background: #ee90e6;
-  box-shadow: 0 0 20px #ee90e6;
+  @include setTypeColor(#ee90e6, #ee90e6);
 }
 
 .fighting {
-  background: #d3425f;
-  box-shadow: 0 0 20px #d3425f;
+  @include setTypeColor(#d3425f, #d3425f);
 }
 
 .flying {
-  background: #a1bbec;
-  box-shadow: 0 0 20px #a1bbec;
+  @include setTypeColor(#a1bbec, #a1bbec);
 }
 
 .ghost {
-  background: #5f6dbc;
-  box-shadow: 0 0 20px #5f6dbc;
+  @include setTypeColor(#5f6dbc, #5f6dbc);
 }
 
 .grass {
-  background: #5fbd58;
-  box-shadow: 0 0 20px #5fbd58;
+  @include setTypeColor(#5fbd58, #5fbd58);
 }
 
 .ground {
-  background: #da7c4d;
-  box-shadow: 0 0 20px #da7c4d;
+  @include setTypeColor(#da7c4d, #da7c4d);
 }
 
 .ice {
-  background: #75d0c1;
-  box-shadow: 0 0 20px #75d0c1;
+  @include setTypeColor(#75d0c1, #75d0c1);
 }
 
 .normal {
-  background: #a0a29f;
-  box-shadow: 0 0 20px #a0a29f;
+  @include setTypeColor(#a0a29f, #a0a29f);
 }
 
 .poison {
-  background: #b763cf;
-  box-shadow: 0 0 20px #b763cf;
+  @include setTypeColor(#b763cf, #b763cf);
 }
 
 .psychic {
-  background: #fa8581;
-  box-shadow: 0 0 20px #fa8581;
+  @include setTypeColor(#fa8581, #fa8581);
 }
 
 .rock {
-  background: #c9bb8a;
-  box-shadow: 0 0 20px #c9bb8a;
+  @include setTypeColor(#c9bb8a, #c9bb8a);
 }
 
 .steel {
-  background: #5695a3;
-  box-shadow: 0 0 20px #5695a3;
+  @include setTypeColor(#5695a3, #5695a3);
 }
 
 .water {
-  background: #539ddf;
-  box-shadow: 0 0 20px #539ddf;
+  @include setTypeColor(#539ddf, #539ddf);
 }
 
 // Colors
 .black {
-  background-color: #607d8b !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#607d8b);
 }
 
 .blue {
-  background-color: #81d4fa !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#81d4fa);
 }
 
 .brown {
-  background-color: #bcaaa4 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#bcaaa4);
 }
 
 .gray {
-  background-color: #a6a6a6 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#a6a6a6);
 }
 
 .green {
-  background-color: #81c784 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#81c784);
 }
 
 .pink {
-  background-color: #f8bbd0 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#f8bbd0);
 }
 
 .purple {
-  background-color: #ad8ee7 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#ad8ee7);
 }
 
 .red {
-  background-color: #ff8a80 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#ff8a80);
 }
 
 .white {
-  background-color: #d5dbe1 !important;
-  color: dimgray !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#d5dbe1);
 }
 
 .yellow {
-  background-color: #ffd600 !important;
-  color: white !important;
-  transition: background-color 1000ms ease-in, width 1500ms ease-in-out;
+  @include setBackgroundColor(#ffd600);
 }
 
-table.table-black tbody {
-  background-color: #f3f8fa;
-}
+.container {
+  &-black {
+    background-color: #f3f8fa;
+  }
 
-table.table-blue tbody {
-  background-color: #ecf9ff;
-}
+  &-blue {
+    background-color: #ecf9ff;
+  }
 
-table.table-brown tbody {
-  background-color: #f4f4f4;
-}
+  &-brown {
+    background-color: #f4f4f4;
+  }
 
-table.table-gray tbody {
-  background-color: #f0f0f0;
-}
-
-table.table-green tbody {
-  background-color: #eeffef;
-}
-
-table.table-pink tbody {
-  background-color: #fff7fa;
-}
-
-table.table-purple tbody {
-  background-color: #f7f2ff;
-}
-
-table.table-red tbody {
-  background-color: #fff9f9;
-}
-
-table.table-white tbody {
-  background-color: #f6f7f8;
-}
-
-table.table-yellow tbody {
-  background-color: #fffade;
+  &-green {
+    background-color: #eeffef;
+  }
+  &-pink {
+    background-color: #fff7fa;
+  }
+  &-purple {
+    background-color: #f7f2ff;
+  }
+  &-red {
+    background-color: #fff9f9;
+  }
+  &-white {
+    background-color: #f6f7f8;
+  }
+  &-yellow {
+    background-color: #fffade;
+  }
 }

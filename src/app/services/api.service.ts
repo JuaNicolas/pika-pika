@@ -20,13 +20,11 @@ export class ApiService {
         count,
         next,
         previous,
-        results: results
-          .map(({ name, url }) => ({
-            name,
-            url,
-            id: +url.split('/')[6],
-          }))
-          .slice(0, 20),
+        results: results.map(({ name, url }) => ({
+          name,
+          url,
+          id: +url.split('/')[6],
+        })),
       }))
     );
   }

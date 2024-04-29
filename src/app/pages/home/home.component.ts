@@ -10,8 +10,8 @@ import { ApiService } from 'src/app/services/api.service';
   standalone: true,
   imports: [CommonModule, PokemonCardComponent, SearchComponent],
   template: `
-    <div class="row">
-      <app-search class="col-12" [searchParam]="searchParam$"></app-search>
+    <div class="row justify-content-center py-5">
+      <app-search [searchParam]="searchParam$"></app-search>
     </div>
 
     <div class="row">
@@ -23,7 +23,7 @@ import { ApiService } from 'src/app/services/api.service';
         [id]="pokemon.id"
       ></app-pokemon-card>
       } @empty {
-      <p>No products added yet!</p>
+      <div>No products added yet!</div>
       }
     </div>
   `,
